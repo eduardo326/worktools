@@ -9,8 +9,8 @@ import { Mensaje } from './models/mensaje';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-  
   private client: Client;
+
   conectado: boolean = false;
 
   mensaje: Mensaje = new Mensaje();
@@ -19,7 +19,7 @@ export class ChatComponent implements OnInit {
   escribiendo: string;
   clienteId: string;
 
-  constructor() { 
+  constructor() {
     this.clienteId = 'id-' + new Date().getTime() + '-' + Math.random().toString(36).substr(2);
   }
 
@@ -51,7 +51,7 @@ export class ChatComponent implements OnInit {
         setTimeout(() => this.escribiendo = '', 3000)
 
       });
-
+      console.log(this.clienteId);
       this.client.subscribe('/chat/historial/' + this.clienteId, e => {
         const historial = JSON.parse(e.body) as Mensaje[];
         this.mensajes = historial.map(m => {
@@ -73,7 +73,6 @@ export class ChatComponent implements OnInit {
       this.mensajes = [];
     }
 
-    // this.client.activate();
   }
 
   conectar(): void {
@@ -93,5 +92,4 @@ export class ChatComponent implements OnInit {
   escribiendoEvento(): void {
     this.client.publish({ destination: '/app/escribiendo', body: this.mensaje.username });
   }
-
 }

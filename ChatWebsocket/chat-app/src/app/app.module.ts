@@ -1,11 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
-// import rutas
-import { ROUTES } from './app.routes';
-
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChatComponent } from './chat/chat.component';
 
@@ -16,7 +12,7 @@ import { ChatComponent } from './chat/chat.component';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot( ROUTES, { useHash: true } ),
+    AppRoutingModule,
     FormsModule
   ],
   providers: [],
