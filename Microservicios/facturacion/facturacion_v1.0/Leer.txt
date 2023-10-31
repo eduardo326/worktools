@@ -1,9 +1,0 @@
-Orden de despliegue.
-
-1. Eureka-server
-2. Config Server
-3. Servicio Zuul
-4. Servicio Usuario
-5. Servicio oauth
-6. Servicio Productos
-7. Servicio Items
